@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ViKkx.ai | Professional AI Studio</title>
+  <meta name="theme-color" content="#F5F2ED">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      -webkit-tap-highlight-color: transparent;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #F5F2ED;
+      overscroll-behavior-y: auto;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-image: url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    h1, h2, h3, .traditional-font {
+      font-family: 'Crimson Pro', serif;
+    }
+    
+    /* Follow Button Hyper-Pulse */
+    @keyframes hyper-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(229, 72, 57, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(229, 72, 57, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(229, 72, 57, 0); }
+    }
+    .btn-follow-pulse {
+      animation: hyper-pulse 2s infinite;
+    }
+    
+    /* Themed Download Button Animation */
+    @keyframes artifact-shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .btn-artifact {
+      background: linear-gradient(90deg, #111 0%, #333 50%, #111 100%);
+      background-size: 200% 100%;
+      animation: artifact-shimmer 3s infinite linear;
+    }
+
+    /* Anime Floating Frames */
+    @keyframes anime-float-alt {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-8px) scale(1.02); }
+    }
+    .anime-frame-float {
+      animation: anime-float-alt 5s ease-in-out infinite;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    
+    /* Unique Vik Loader */
+    .vik-loading-box {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .vik-loading-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid #E5483920;
+      border-top-color: #E54839;
+      border-radius: 50%;
+      animation: vik-rotate 0.8s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
+    }
+    .vik-loading-dot {
+      width: 8px;
+      height: 8px;
+      background: #E54839;
+      border-radius: 50%;
+      animation: vik-pulse 0.8s ease-in-out infinite;
+    }
+    @keyframes vik-rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes vik-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.4; }
+    }
+
+    .creative-pulse {
+      animation: hub-pulse 2s infinite;
+    }
+    @keyframes hub-pulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    button:active {
+      transform: scale(0.96);
+      transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    @media (max-width: 768px) {
+      .pb-app-nav {
+        padding-bottom: 120px;
+      }
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
+  }
+}
+</script>
+</head>
+<body class="min-h-screen">
+  <div id="root"></div>
+</body>
+</html>
