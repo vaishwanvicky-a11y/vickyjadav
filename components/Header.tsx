@@ -4,32 +4,59 @@ import { Logo } from './Logo';
 import { Mode } from '../types';
 
 interface HeaderProps {
-  activeMode?: Mode;
+  activeMode: Mode;
+  onBack: () => void;
+  credits: number;
+  userName: string;
+  onLogout: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ activeMode }) => {
+const Header: React.FC<HeaderProps> = ({ activeMode, onBack, credits, userName, onLogout }) => {
   const handleSupport = () => {
     window.open('https://www.instagram.com/vikkx.ai/', '_blank');
   };
 
   return (
-    <header className="px-4 md:px-10 py-4 md:py-6 flex items-center justify-between glass sticky top-0 z-40 border-b border-[#E54839]/5">
-      <div className="flex items-center">
+    <header className="px-4 md:px-10 py-4 md:py-6 flex items-center justify-between glass sticky top-0 z-40 border-b border-[#E54839]/5 min-h-[80px]">
+      <div className="flex items-center gap-4">
+        {activeMode !== Mode.HOME && (
+          <button 
+            onClick={onBack}
+            className="flex items-center gap-2 px-3 md:px-5 py-2.5 bg-gray-100/80 hover:bg-gray-200 text-gray-900 rounded-xl md:rounded-2xl transition-all animate-in group active:scale-95"
+          >
+            <svg className="w-4 h-4 text-[#E54839] group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="hidden sm:inline text-[10px] font-black uppercase tracking-widest">Back</span>
+          </button>
+        )}
         <Logo size="sm" className="scale-90 md:scale-100" />
       </div>
 
       <div className="flex items-center gap-3">
+        {/* Credits Chip */}
+        <div className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E54839]/10 rounded-full shadow-sm">
+          <span className="text-[#E54839] text-sm animate-pulse">✦</span>
+          <span className="text-xs font-black text-gray-900 uppercase tracking-widest">{credits} <span className="text-gray-400">Credits</span></span>
+        </div>
+
+        {/* User Info */}
+        <div className="hidden md:flex items-center gap-2 pl-2">
+          <button 
+            onClick={onLogout}
+            title={`Logged in as ${userName}`}
+            className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white text-xs font-black border-2 border-white shadow-lg hover:bg-red-600 transition-colors uppercase"
+          >
+            {userName.charAt(0)}
+          </button>
+        </div>
+
         <button 
           onClick={handleSupport}
-          className="btn-follow-pulse relative group px-5 md:px-8 py-3.5 md:py-4 bg-gray-900 text-white rounded-2xl md:rounded-[2rem] font-black text-[9px] md:text-xs uppercase tracking-[0.25em] transition-all hover:bg-black hover:-translate-y-0.5 shadow-2xl active:scale-95 overflow-hidden flex items-center gap-3 border border-white/10"
+          className="btn-follow-pulse relative group px-4 md:px-8 py-3 md:py-4 bg-gray-900 text-white rounded-2xl md:rounded-[2rem] font-black text-[9px] md:text-xs uppercase tracking-[0.25em] transition-all hover:bg-black hover:-translate-y-0.5 shadow-2xl active:scale-95 overflow-hidden flex items-center gap-2 md:gap-3 border border-white/10"
         >
-          <div className="relative">
-            <svg className="w-4 h-4 md:w-5 md:h-5 text-[#E54839] relative z-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            <div className="absolute inset-0 bg-[#E54839]/30 blur-xl rounded-full animate-pulse"></div>
-          </div>
-          <span className="relative z-10">Follow me and support us</span>
+          <span className="relative z-10 hidden sm:inline">Support</span>
+          <span className="relative z-10 sm:hidden">Help</span>
         </button>
       </div>
     </header>

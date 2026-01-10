@@ -8,6 +8,11 @@ export enum Mode {
   WISH = 'WISH'
 }
 
+export interface User {
+  name: string;
+  credits: number;
+}
+
 export interface GeneratedAsset {
   id: string;
   type: Mode;

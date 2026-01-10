@@ -14,8 +14,8 @@ export const Logo: React.FC<{ className?: string; size?: 'sm' | 'md' | 'lg' }> =
             <path d="M55 35L75 55L55 75" stroke="white" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
           </svg>
         </div>
-        <span className="text-2xl font-[900] tracking-tighter text-gray-900 traditional-font leading-none">
-          ViKkx<span className="text-[#E54839]">.ai</span>
+        <span className="text-2xl font-[900] tracking-tighter text-gray-900 traditional-font leading-none uppercase">
+          VIKKX<span className="text-[#E54839]">.ai</span>
         </span>
       </div>
       <div className="flex items-center gap-2 pl-1">
